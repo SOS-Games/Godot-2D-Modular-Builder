@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://c716bree1amqx"]
+
+[ext_resource type="Script" path="res://scripts/Block.gd" id="1_aa7er"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qg6vi"]
+
+[node name="Block" type="CollisionShape2D"]
+shape = SubResource("RectangleShape2D_qg6vi")
+script = ExtResource("1_aa7er")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(0, 0.533333, 0.541176, 1)
+polygon = PackedVector2Array(-10, -10, -10, 10, 10, 10, 10, -10)
