@@ -36,6 +36,8 @@ func _ready():
 	
 
 func _draw():
+	return
+	
 	draw_line(Vector2.ZERO, Vector2(-100, 0), Color.BLUE, 3)
 	if (force != Vector2.ZERO):
 		#print(rad_to_deg(global_rotation))
@@ -80,14 +82,15 @@ func _process(delta):
 	if applyForce:
 		lastForce = force
 		force = Vector2(cos(angle), sin(angle))
-		print(rad_to_deg(global_rotation))
+		#print(rad_to_deg(global_rotation))
 	else:
 		force = Vector2.ZERO
 	
 	force *= maxForce
 	
-	if applyForce:
-		ship.apply_force(force * delta, forceLocation)
+	#if applyForce: # forceLocation
+	ship.apply_force(force * delta, position)
+	print(global_position)
 	queue_redraw()
 	
 	# it is so wobbly, and it doesn't follow the right angle when it should move straight but diagonally

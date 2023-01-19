@@ -54,6 +54,7 @@ position = Vector2(40, 6.10352e-05)
 rotation = -3.14159
 
 [node name="satellite ship" type="RigidBody2D" parent="."]
+process_mode = 4
 position = Vector2(168, 191)
 center_of_mass_mode = 1
 gravity_scale = 0.0
@@ -89,6 +90,30 @@ rotation = 4.71239
 [node name="Thruster4" parent="satellite ship" instance=ExtResource("3_srd1j")]
 position = Vector2(40, 6.10352e-05)
 rotation = -3.14159
+
+[node name="hammer ship" type="RigidBody2D" parent="."]
+process_mode = 4
+position = Vector2(300, 247)
+center_of_mass_mode = 1
+gravity_scale = 0.0
+continuous_cd = 2
+script = ExtResource("1_5dlde")
+
+[node name="Block" parent="hammer ship" instance=ExtResource("1_mlibc")]
+position = Vector2(-20, 6.10352e-05)
+
+[node name="Block3" parent="hammer ship" instance=ExtResource("1_mlibc")]
+position = Vector2(-40, 4.36557e-11)
+
+[node name="Block2" parent="hammer ship" instance=ExtResource("1_mlibc")]
+position = Vector2(0, 6.10352e-05)
+
+[node name="Block5" parent="hammer ship" instance=ExtResource("1_mlibc")]
+position = Vector2(20, 6.10352e-05)
+
+[node name="Thruster4" parent="hammer ship" instance=ExtResource("3_srd1j")]
+position = Vector2(22, 20)
+rotation = -1.5708
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(190, 105)

@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://scripts/Block.gd" id="1_aa7er"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qg6vi"]
+size = Vector2(20.5, 20)
 
 [node name="Block" type="CollisionShape2D"]
 shape = SubResource("RectangleShape2D_qg6vi")
