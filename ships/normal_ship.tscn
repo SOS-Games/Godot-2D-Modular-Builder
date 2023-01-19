@@ -1,0 +1,48 @@
+[gd_scene load_steps=4 format=3 uid="uid://2vka0yp52hb"]
+
+[ext_resource type="Script" path="res://scripts/Ship.gd" id="1_w6kxd"]
+[ext_resource type="PackedScene" uid="uid://c716bree1amqx" path="res://scenes/block.tscn" id="2_sq0sd"]
+[ext_resource type="PackedScene" uid="uid://dc4s3i6sjkmet" path="res://scenes/thruster.tscn" id="3_hcyhy"]
+
+[node name="Normal ship" type="RigidBody2D"]
+position = Vector2(61, 42)
+center_of_mass_mode = 1
+gravity_scale = 0.0
+continuous_cd = 2
+script = ExtResource("1_w6kxd")
+
+[node name="Block" parent="." instance=ExtResource("2_sq0sd")]
+position = Vector2(-20, 6.10352e-05)
+
+[node name="Block2" parent="." instance=ExtResource("2_sq0sd")]
+position = Vector2(0, 6.10352e-05)
+
+[node name="Block3" parent="." instance=ExtResource("2_sq0sd")]
+position = Vector2(0, 20.0001)
+
+[node name="Block4" parent="." instance=ExtResource("2_sq0sd")]
+position = Vector2(0, -19.9999)
+
+[node name="Block5" parent="." instance=ExtResource("2_sq0sd")]
+position = Vector2(20, 6.10352e-05)
+
+[node name="ThrusterRearCentral" parent="." instance=ExtResource("3_hcyhy")]
+position = Vector2(-40, 6.10352e-05)
+
+[node name="ThrusterRearLeft" parent="." instance=ExtResource("3_hcyhy")]
+position = Vector2(-20, -20)
+
+[node name="ThrusterRearRight" parent="." instance=ExtResource("3_hcyhy")]
+position = Vector2(-20, 20)
+
+[node name="ThrusterFrontLeft" parent="." instance=ExtResource("3_hcyhy")]
+position = Vector2(20, -20)
+rotation = 1.5708
+
+[node name="ThrusterFrontRight" parent="." instance=ExtResource("3_hcyhy")]
+position = Vector2(20, 20)
+rotation = 4.71239
+
+[node name="ThrusterCentralFront" parent="." instance=ExtResource("3_hcyhy")]
+position = Vector2(40, 6.10352e-05)
+rotation = -3.14159

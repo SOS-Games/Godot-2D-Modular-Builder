@@ -1,3 +1,3 @@
 # Godot-2D-Modular-Builder
 
-bugged
+WIP, snap together blocks to make ships out of them

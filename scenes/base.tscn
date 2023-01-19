@@ -1,8 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://bun6bveildrpw"]
+[gd_scene load_steps=3 format=3 uid="uid://bun6bveildrpw"]
 
-[ext_resource type="Script" path="res://scripts/Ship.gd" id="1_5dlde"]
-[ext_resource type="PackedScene" uid="uid://c716bree1amqx" path="res://scenes/block.tscn" id="1_mlibc"]
-[ext_resource type="PackedScene" uid="uid://dc4s3i6sjkmet" path="res://scenes/thruster.tscn" id="3_srd1j"]
+[ext_resource type="PackedScene" uid="uid://2vka0yp52hb" path="res://ships/normal_ship.tscn" id="1_0613n"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_r8jiy"]
 a = Vector2(770, 430)
@@ -10,110 +8,7 @@ b = Vector2(-393, 430)
 
 [node name="Base" type="Node2D"]
 
-[node name="Normal ship" type="RigidBody2D" parent="."]
-position = Vector2(61, 42)
-center_of_mass_mode = 1
-gravity_scale = 0.0
-continuous_cd = 2
-script = ExtResource("1_5dlde")
-
-[node name="Block" parent="Normal ship" instance=ExtResource("1_mlibc")]
-position = Vector2(-20, 6.10352e-05)
-
-[node name="Block2" parent="Normal ship" instance=ExtResource("1_mlibc")]
-position = Vector2(0, 6.10352e-05)
-
-[node name="Block3" parent="Normal ship" instance=ExtResource("1_mlibc")]
-position = Vector2(0, 20.0001)
-
-[node name="Block4" parent="Normal ship" instance=ExtResource("1_mlibc")]
-position = Vector2(0, -19.9999)
-
-[node name="Block5" parent="Normal ship" instance=ExtResource("1_mlibc")]
-position = Vector2(20, 6.10352e-05)
-
-[node name="Thruster" parent="Normal ship" instance=ExtResource("3_srd1j")]
-position = Vector2(-40, 6.10352e-05)
-
-[node name="Thruster5" parent="Normal ship" instance=ExtResource("3_srd1j")]
-position = Vector2(-20, -20)
-
-[node name="Thruster6" parent="Normal ship" instance=ExtResource("3_srd1j")]
-position = Vector2(-20, 20)
-
-[node name="Thruster2" parent="Normal ship" instance=ExtResource("3_srd1j")]
-position = Vector2(20, -20)
-rotation = 1.5708
-
-[node name="Thruster3" parent="Normal ship" instance=ExtResource("3_srd1j")]
-position = Vector2(20, 20)
-rotation = 4.71239
-
-[node name="Thruster4" parent="Normal ship" instance=ExtResource("3_srd1j")]
-position = Vector2(40, 6.10352e-05)
-rotation = -3.14159
-
-[node name="satellite ship" type="RigidBody2D" parent="."]
-process_mode = 4
-position = Vector2(168, 191)
-center_of_mass_mode = 1
-gravity_scale = 0.0
-continuous_cd = 2
-script = ExtResource("1_5dlde")
-
-[node name="Block" parent="satellite ship" instance=ExtResource("1_mlibc")]
-position = Vector2(-20, 6.10352e-05)
-
-[node name="Block2" parent="satellite ship" instance=ExtResource("1_mlibc")]
-position = Vector2(0, 6.10352e-05)
-
-[node name="Block3" parent="satellite ship" instance=ExtResource("1_mlibc")]
-position = Vector2(0, 20.0001)
-
-[node name="Block4" parent="satellite ship" instance=ExtResource("1_mlibc")]
-position = Vector2(0, -19.9999)
-
-[node name="Block5" parent="satellite ship" instance=ExtResource("1_mlibc")]
-position = Vector2(20, 6.10352e-05)
-
-[node name="Thruster" parent="satellite ship" instance=ExtResource("3_srd1j")]
-position = Vector2(-40, 6.10352e-05)
-
-[node name="Thruster2" parent="satellite ship" instance=ExtResource("3_srd1j")]
-position = Vector2(0, -40)
-rotation = 1.5708
-
-[node name="Thruster3" parent="satellite ship" instance=ExtResource("3_srd1j")]
-position = Vector2(0, 40)
-rotation = 4.71239
-
-[node name="Thruster4" parent="satellite ship" instance=ExtResource("3_srd1j")]
-position = Vector2(40, 6.10352e-05)
-rotation = -3.14159
-
-[node name="hammer ship" type="RigidBody2D" parent="."]
-process_mode = 4
-position = Vector2(300, 247)
-center_of_mass_mode = 1
-gravity_scale = 0.0
-continuous_cd = 2
-script = ExtResource("1_5dlde")
-
-[node name="Block" parent="hammer ship" instance=ExtResource("1_mlibc")]
-position = Vector2(-20, 6.10352e-05)
-
-[node name="Block3" parent="hammer ship" instance=ExtResource("1_mlibc")]
-position = Vector2(-40, 4.36557e-11)
-
-[node name="Block2" parent="hammer ship" instance=ExtResource("1_mlibc")]
-position = Vector2(0, 6.10352e-05)
-
-[node name="Block5" parent="hammer ship" instance=ExtResource("1_mlibc")]
-position = Vector2(20, 6.10352e-05)
-
-[node name="Thruster4" parent="hammer ship" instance=ExtResource("3_srd1j")]
-position = Vector2(22, 20)
-rotation = -1.5708
+[node name="Normal ship" parent="." instance=ExtResource("1_0613n")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(190, 105)

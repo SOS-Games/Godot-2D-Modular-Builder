@@ -21,7 +21,7 @@ func _ready():
 	yCenterOfMass = totalYAdjMass / totalMass
 	
 	var centerOfMass := Vector2(xCenterOfMass, yCenterOfMass)
-	print(centerOfMass)
+	#print(centerOfMass)
 	
 	
 	get_node("%indicator").position = position + centerOfMass
@@ -35,9 +35,16 @@ func _ready():
 		var force = thruster.get_node("force")
 		force.forceLocation = centerOfMass + thruster.position
 		
-		#print(thruster.name)
+		# make a line from the centerOfMass to the thruster
+		force.offsetAngle = force.vectorComponents.angle_to(force.forceLocation)
+		# this calculation is probably wrong, but it works for now
+		# verify this by seeing the offsetAngle for each thruster
+		# perpendicular thrusters (left/right) should have a greater angle than parellel
+		# however, the print() statements do not show this to be true
+		print(thruster.name)
+		print(str(force.offsetAngle).pad_decimals(2))
 		#print(force.vectorComponents)
-		#print(force.forceLocation)
+		#print(force.forceLocation.length())
 		force.set_process(true)
 	
 func _process(delta):

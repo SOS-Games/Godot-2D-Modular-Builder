@@ -3,7 +3,7 @@ extends Node2D
 @export
 var maxForce = 100000
 
-var ship
+var ship: RigidBody2D
 
 @export
 var forceLocation := Vector2.ZERO
@@ -11,11 +11,15 @@ var forceLocation := Vector2.ZERO
 @export
 var vectorComponents := Vector2.ZERO
 
+@export
 var offsetAngle := 0.0
 
 var force := Vector2.ZERO
 
 var lastForce := Vector2.ZERO
+
+var radius := 0.0
+
 
 func _ready():
 	# figure out which direction we go
@@ -24,12 +28,14 @@ func _ready():
 	var vectorX = str(vector.x).pad_decimals(2)
 	var vectorY = str(vector.y).pad_decimals(2)
 	vectorComponents = Vector2(float(vectorX), float(vectorY))
-
-	print(get_parent().name)
-
+	
+	#print(get_parent().name)
+	#print(offsetAngle)
 	#print(str(rad_to_deg(vectorComponents.angle())).pad_decimals(2))
 	
 	ship = get_parent().get_parent()
+	
+	radius = get_parent().position.length()
 	
 	set_process(false)
 	# disable processing until ship populates needed variables
@@ -73,25 +79,56 @@ func _process(delta):
 	if Input.is_action_pressed("right") && vectorComponents.y > 0:
 		applyForce = true
 
-	
-	# after analyzing the forces, perhaps there is an issue with the engine itself
-	# forward, backward forces should not cause the ship to rotate
-	# and left, right forces should not cause bouncing
-	
 	var angle = global_rotation
 	if applyForce:
 		lastForce = force
 		force = Vector2(cos(angle), sin(angle))
+		force *= maxForce
 		#print(rad_to_deg(global_rotation))
 	else:
 		force = Vector2.ZERO
 	
-	force *= maxForce
 	
-	#if applyForce: # forceLocation
-	ship.apply_force(force * delta, position)
-	print(global_position)
+	if applyForce:
+		# turns out that using forceLocation causes buggy movement
+		
+		# however, using position doesn't apply any torque (rotation)
+		ship.apply_force(force * delta, position)
+		#ship.apply_torque()
+		
+		# rotate towards mouse or target
+		# how to calculate torque
+		# option: calculate when a thruster is off center
+		# or just use forceLocation to determine this
+		
+		# from this, we know how far away we are from the center
+		# find the force applied perpendicular to the forceLocation vector
+		# find the components of the force that are perpendicular to the vector from position (0,0) and forceLocation 
+		
+		# find out the angle between these vectors
+		var angularForce = force.length() * sin(offsetAngle)
+		var torque = radius * angularForce
+		ship.apply_torque(-torque/50)
+		
+		#todo:
+		# thrusters should apply torque to follow mouse
+		# how do other games handle this?
+		
+		#print(forceLocation.length())
+		
+		#get_global_mouse_position()
 	queue_redraw()
+	
+	# todo: get the ship to rotate if a force is applied and it is not
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	# it is so wobbly, and it doesn't follow the right angle when it should move straight but diagonally
 	# it instead forces the ship towards some kind of pre-defined angle

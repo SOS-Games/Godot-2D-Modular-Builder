@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://cgbyqg8e3qwu8"]
+
+[ext_resource type="Script" path="res://scripts/Ship.gd" id="1_xosxp"]
+[ext_resource type="PackedScene" uid="uid://c716bree1amqx" path="res://scenes/block.tscn" id="2_6g0mt"]
+[ext_resource type="PackedScene" uid="uid://dc4s3i6sjkmet" path="res://scenes/thruster.tscn" id="3_mngmu"]
+
+[node name="hammer ship" type="RigidBody2D"]
+position = Vector2(300, 247)
+center_of_mass_mode = 1
+gravity_scale = 0.0
+continuous_cd = 2
+script = ExtResource("1_xosxp")
+
+[node name="Block" parent="." instance=ExtResource("2_6g0mt")]
+position = Vector2(-20, 6.10352e-05)
+
+[node name="Block3" parent="." instance=ExtResource("2_6g0mt")]
+position = Vector2(-40, 4.36557e-11)
+
+[node name="Block2" parent="." instance=ExtResource("2_6g0mt")]
+position = Vector2(0, 6.10352e-05)
+
+[node name="Block5" parent="." instance=ExtResource("2_6g0mt")]
+position = Vector2(20, 6.10352e-05)
+
+[node name="Thruster4" parent="." instance=ExtResource("3_mngmu")]
+position = Vector2(22, 20)
+rotation = -1.5708
